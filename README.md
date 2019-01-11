@@ -27,7 +27,7 @@
 
 ### 2.2安装插件
 
-使用Lombok还需要插件的配合，我使用开发工具为idea，这里只讲解idea的安装，使用eclipse和myeclipse的小伙伴和自行google安装方法。
+使用Lombok还需要插件的配合，我使用开发工具为idea，这里只讲解idea中安装lombok插件，使用eclipse和myeclipse的小伙伴和自行google安装方法。
 打开idea的设置，点击**Plugins**，点击**Browse repositories**，在弹出的窗口中搜索**lombok**，然后安装即可。
 
 ![安装lombok插件](https://raw.githubusercontent.com/JourWon/image/master/lombok/%E5%AE%89%E8%A3%85lombok%E6%8F%92%E4%BB%B6.png)
@@ -163,7 +163,7 @@ public class UserController {
 }
 ```
 
-通过反编译可以看到@Slf4j注解生成了log日志变量，无需去声明一个log就可以在类中使用log记录日志。
+通过反编译可以看到@Slf4j注解生成了log日志变量（严格意义来说是常量），无需去声明一个log就可以在类中使用log记录日志。
 
 ![反编译用户controller类](https://raw.githubusercontent.com/JourWon/image/master/lombok/%E5%8F%8D%E7%BC%96%E8%AF%91%E7%94%A8%E6%88%B7controller%E7%B1%BB.png)
 
@@ -189,7 +189,7 @@ public class UserController {
 
 - 运行时解析
 
-运行时能够解析的注解，必须将@Retention设置为RUNTIME，这样就可以通过反射拿到该注解。java.lang,reflect反射包中提供了一个接口AnnotatedElement，该接口定义了获取注解信息的几个方法，Class、Constructor、Field、Method、Package等都实现了该接口，对反射熟悉的朋友应该都会很熟悉这种解析方式。
+运行时能够解析的注解，必须将@Retention设置为RUNTIME，这样就可以通过反射拿到该注解。java.lang.reflect反射包中提供了一个接口AnnotatedElement，该接口定义了获取注解信息的几个方法，Class、Constructor、Field、Method、Package等都实现了该接口，对反射熟悉的朋友应该都会很熟悉这种解析方式。
 
 - 编译时解析
 
@@ -215,7 +215,7 @@ Lombok本质上就是一个实现了“[JSR 269 API](https://www.jcp.org/en/jsr/
 3. 此时Lombok就对第一步骤得到的AST进行处理，找到@Data注解所在类对应的语法树（AST），然后修改该语法树（AST），增加getter和setter方法定义的相应树节点
 4. javac使用修改后的抽象语法树（AST）生成字节码文件，即给class增加新的节点（代码块）
 
-通过读Lombok源码，发现对应注解的实现都在HandleXXX中，比如@Getter注解的实现时HandleGetter.handle()。还有一些其它类库使用这种方式实现，比如[Google Auto](https://github.com/google/auto)、[Dagger](http://square.github.io/dagger/)等等。
+通过读Lombok源码，发现对应注解的实现都在HandleXXX中，比如@Getter注解的实现在HandleGetter.handle()。还有一些其它类库使用这种方式实现，比如[Google Auto](https://github.com/google/auto)、[Dagger](http://square.github.io/dagger/)等等。
 
 ## 4.Lombok的优缺点
 
