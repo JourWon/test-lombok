@@ -9,6 +9,7 @@
 大概的意思：Lombok是一个Java库，能自动插入编辑器并构建工具，简化Java开发。通过添加注解的方式，不需要为类编写getter或eques方法，同时可以自动化日志变量。[官网链接](https://www.projectlombok.org/)
 
 简而言之：Lombok能以简单的注解形式来简化java代码，提高开发人员的开发效率。
+[博客及源码GitHub链接](https://github.com/JourWon/test-lombok)
 
 ## 2.Lombok使用
 
